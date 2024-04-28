@@ -1,0 +1,78 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ItemType {
+  PRODUCT
+  OFF_SERVICE
+  INTERNET_SERVICE
+  PACKAGE
+}
+
+model User {
+  id           String  @id @default(uuid())
+  name         String
+  documentId   String  @unique @map("document_id")
+  age          Int
+  street       String
+  number       Int
+  neighborhood String
+  city         String
+  state        String
+  zipCode      String  @map("zip_code")
+  order        Order[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Item {
+  id              String            @id @default(uuid())
+  name            String
+  priceInCents    Int               @map("price_in_cents")
+  type            ItemType
+  itemsOnCoverage ItemsOnCoverage[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  Order     Order[]
+
+  @@map("items")
+}
+
+model Coverage {
+  id              String            @id @default(uuid())
+  zipCode         String            @map("zip_code")
+  itemsOnCoverage ItemsOnCoverage[]
+
+  @@map("coverages")
+}
+
+model Order {
+  id                String @id @default(uuid())
+  itemId            String @map("item_id")
+  userId            String @map("user_id")
+  totalPriceInCents Int    @map("total_price_in_cents")
+
+  item Item @relation(fields: [itemId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("orders")
+}
+
+model ItemsOnCoverage {
+  id         String @id @default(uuid())
+  itemId     String
+  coverageId String
+
+  item     Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  coverage Coverage @relation(fields: [coverageId], references: [id], onDelete: Cascade)
+}
