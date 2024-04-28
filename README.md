@@ -1,14 +1,7 @@
-melhorar validação de endereço
-melhorar validação do documentId (cpf)
-melhorar a compra de items podendo comprar vários items ao mesmo tempo
-evitar concorrência no banco de dados, usar um lock (otimista ou pessimista)
-melhorar authenticação utilizando jwt ao registrar usuário
-
-
 <div align='center'>
-	<h1>Loja Online de Produtos e Serviços</h1>
-	<img src='https://img.shields.io/github/languages/top/nitoba/picpay-challenge' alt='Linguagem mais utilizada' />
-	<img src='https://img.shields.io/github/last-commit/nitoba/picpay-challenge' alt='Último commit' />
+	<h1>Shop-Hub | Loja Online de Produtos e Serviços</h1>
+	<img src='https://img.shields.io/github/languages/top/nitoba/shop-hub' alt='Linguagem mais utilizada' />
+	<img src='https://img.shields.io/github/last-commit/nitoba/shop-hub' alt='Último commit' />
 </div>
 
 ## 🚀 Introdução
@@ -58,8 +51,11 @@ Para rodar a aplicação você precisa  ter o [NodeJS](https://nodejs.org/en) an
 
 
 ## 🧑‍💻 Possíveis melhorias
-- Write unite tests for the api server
-- Add dependency injection system to auto create the objects and inject them in the controllers
+- Melhorar validação de endereço
+- Melhorar validação do documentId (cpf)
+- Melhorar a compra de items podendo comprar vários items ao mesmo tempo
+- Evitar concorrência no banco de dados usando estratégias de lock (otimista ou pessimista)
+- Adicionar autenticação para usuários como por exemplo JWT
 
 ## 📄 Licença
 
@@ -67,7 +63,7 @@ Este projeto encontra-se sob a licença MIT. Acesse o link [LICENSE](https://mit
 
 ## 🌐 GitHub
 
-O código dessa aplicação pode ser encontrado no GitHub: [Project Link](https://github.com/nitoba/picpay-challenge)
+O código dessa aplicação pode ser encontrado no GitHub: [Project Link](https://github.com/nitoba/shop-hub)
 
 ## 📧 Contato
 
