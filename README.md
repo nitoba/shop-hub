@@ -22,13 +22,13 @@ Este projeto consiste em uma api para um sistema web que permite a venda de prod
 
 A aplicação segue os seguinte design patters:
 
-1. **Clean Architecture**: The project structure is organized in layers (entities, use cases, interfaces) to separate concerns and facilitate maintenance.
+1. **Clean Architecture**: O projeto é estruturado e organizado em camadas (entities, use cases, interfaces) para separar responsabilidades e facilitar manutenção.
 
-2. **Domain Driven Design (DDD)**: The software design is domain-oriented, focusing on business rules and main entities.
+2. **Domain Driven Design (DDD)**: O software é desenhado orientado ao domínio, focando nas regras de negócio e entidades do sistema.
 
-3. **Dependency Injection**: Inversion of control and dependency injection are used to ensure code flexibility and testability.
+3. **Dependency Injection**: Inversão de controle e injeção de dependência são usadas para garantir flexibilidade e testabilidade do código.
 
-4. **Ports and Adapters**: The ports and adapters pattern, also known as hexagonal architecture, is a software design pattern that creates loosely coupled application components.
+4. **Ports and Adapters**: alguns conceitos vindos da arquitetura hexagonal, é um padrão de design de software que cria componentes de aplicativos fracamente acoplados.
 
 ## 🎯 O sistema oferece as seguintes funcionalidades
 - **Cotação de produtos e serviços:** Os clientes podem realizar cotações de produtos e serviços sem a necessidade de se registrar na plataforma. No entanto, para finalizar a compra, o cliente precisa se identificar.
