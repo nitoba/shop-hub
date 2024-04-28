@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { InternetServicePresenter } from '../presenters/internet-services-presenter'
 import { OffServicesPresenter } from '../presenters/off-services-presenter'
 import { ProductPresenter } from '../presenters/product-presenter'
+import { PackageServicesPresenter } from '../presenters/package-services-presenter'
 
 export const fetchItemsQuerySchema = z.object({
   zipCode: z.string(),
@@ -19,6 +20,13 @@ export const fetchItemsResponse = z.object({
       }),
     ),
     off_one: z.array(
+      z.object({
+        id: z.string().uuid(),
+        name: z.string(),
+        priceInCents: z.number(),
+      }),
+    ),
+    packages: z.array(
       z.object({
         id: z.string().uuid(),
         name: z.string(),
@@ -55,6 +63,7 @@ export class FetchItemsController extends Controller {
           InternetServicePresenter.toHttp,
         ),
         off_one: result.value.offServices.map(OffServicesPresenter.toHttp),
+        packages: result.value.packageServices.map(PackageServicesPresenter.toHttp)
       },
       products: result.value.products.map(ProductPresenter.toHttp),
     }
