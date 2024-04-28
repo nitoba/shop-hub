@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   postgres:
-    container_name: db
+    container_name: shop-hub-db
     image: bitnami/postgresql:latest
     ports:
       - 5432:5432

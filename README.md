@@ -40,6 +40,7 @@ A aplicação segue os seguinte design patters:
 
 Para rodar a aplicação você precisa  ter o [NodeJS](https://nodejs.org/en) and [Docker](https://www.docker.com/) instalados na sua máquina.
 - Rode o comando touch .env && cp .env.example .env para criar o arquivo de variáveis de ambiente.
+- Rode o comando touch .env.test && cp .env.test.example .env.test para criar o arquivo de variáveis de ambiente de teste
 - Rode o comando `npm i` para instalar as dependências.
 - Rode o comando `docker compose up -d` para subir o banco de dados.
 - Rode o comando `npx prisma migrate deploy` para aplicar as migrações ao banco de dados.
