@@ -63,7 +63,9 @@ export class FetchItemsController extends Controller {
           InternetServicePresenter.toHttp,
         ),
         off_one: result.value.offServices.map(OffServicesPresenter.toHttp),
-        packages: result.value.packageServices.map(PackageServicesPresenter.toHttp)
+        packages: result.value.packageServices.map(
+          PackageServicesPresenter.toHttp,
+        ),
       },
       products: result.value.products.map(ProductPresenter.toHttp),
     }
