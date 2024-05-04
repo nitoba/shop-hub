@@ -23,6 +23,13 @@ import {
 } from '../../controllers/purchase-item.controller'
 import { PurchaseItemUseCase } from '@/domain/usecases/purchase-item'
 import { PrismaOrderRepository } from '@/infra/database/prisma/repositories/prisma-order-repository'
+import { GetItemByIdUseCase } from '@/domain/usecases/get-item-by-id'
+import {
+  GetItemByIdController,
+  getItemByIdParamsSchema,
+  getItemByIdQuerySchema,
+  getItemByIdResponse,
+} from '../../controllers/get-item-by-id.controller'
 
 export async function itemRouter(app: FastifyInstance) {
   const prismaUserRepository = new PrismaUserRepository(prisma)
@@ -34,12 +41,18 @@ export async function itemRouter(app: FastifyInstance) {
     prismaServicesRepository,
   )
 
+  const getItemByIdUseCase = new GetItemByIdUseCase(
+    prismaProductsRepository,
+    prismaServicesRepository,
+  )
+
   const purchaseItemUseCase = new PurchaseItemUseCase(
     prismaProductsRepository,
     prismaServicesRepository,
     prismaOrderRepository,
   )
 
+  const getItemByIdController = new GetItemByIdController(getItemByIdUseCase)
   const fetchItemsController = new FetchItemsController(fetchItemsUseCase)
   const purchaseItemController = new PurchaseItemController(purchaseItemUseCase)
 
@@ -57,6 +70,23 @@ export async function itemRouter(app: FastifyInstance) {
       },
     },
     fastifyRouteAdapter(fetchItemsController),
+  )
+
+  app.withTypeProvider<ZodTypeProvider>().get(
+    '/items/:itemId',
+    {
+      schema: {
+        summary:
+          'Get an item by id from catalog, including products, off services and internet services',
+        tags: ['Items'],
+        params: getItemByIdParamsSchema,
+        querystring: getItemByIdQuerySchema,
+        response: {
+          200: getItemByIdResponse,
+        },
+      },
+    },
+    fastifyRouteAdapter(getItemByIdController),
   )
 
   app.withTypeProvider<ZodTypeProvider>().post(

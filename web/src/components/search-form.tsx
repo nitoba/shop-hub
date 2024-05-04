@@ -40,10 +40,12 @@ export function SearchForm({ onSubmitSearch }: Props) {
   return (
     <div className="mt-8 gap-3 flex justify-center">
       <form
-        className="grid w-full max-w-sm items-center gap-1.5 justify-center"
+        className="grid w-full max-w-sm text-center gap-1.5 justify-center"
         onSubmit={handleSubmit(handleSearchItems)}
       >
-        <Label className="text-base ml-3">Seu cep</Label>
+        <Label className="text-sm">
+          Use seu cep para buscar serviços disponíveis na sua região
+        </Label>
         <Controller
           control={control}
           name="zipCode"
@@ -62,7 +64,7 @@ export function SearchForm({ onSubmitSearch }: Props) {
                 <InputOTPSlot index={3} />
                 <InputOTPSlot index={4} />
               </InputOTPGroup>
-              <InputOTPSeparator />
+              <InputOTPSeparator className="mx-auto" />
               <InputOTPGroup>
                 <InputOTPSlot index={5} />
                 <InputOTPSlot index={6} />

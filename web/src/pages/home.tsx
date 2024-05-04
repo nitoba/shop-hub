@@ -1,4 +1,4 @@
-import { ListItemsLoading } from '@/components/product-card'
+import { ListItemsLoading } from '@/components/loading-list-items'
 import { SearchForm } from '@/components/search-form'
 import { ListItems } from '@/components/list-items'
 import { useFetchItems } from '@/hooks/useFetchItems'
@@ -29,8 +29,8 @@ export function HomePage() {
             {/* End Title */}
             <div className="mt-5 max-w-3xl">
               <p className="text-xl text-muted-foreground">
-                Há mais de 10 anos no mercado entregando garantia, solução e
-                comodidade nossos clientes
+                Há mais de 10 anos no mercado entregando garantia, soluções e
+                comodidade aos nossos clientes
               </p>
             </div>
             {/* Form */}
